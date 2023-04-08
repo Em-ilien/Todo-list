@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function AddTask(props) {
   const [input, setInput] = useState("");
   return (
-    <div className="AssTask">
+    <div className="AddTask">
       <input
         type="text"
         placeholder="Ajouter un todo"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddTask from "./components/AddTask";
 import List from "./components/List";
+import Header from "./components/Header";
 
 import "./App.css";
 
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Todo List App</h1>
+      <Header />
       <List todoList={tasks} changeDone={changeDone} />
       <AddTask addTask={addTask}/>
     </div>
