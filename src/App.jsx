@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddTask from "./components/AddTask";
 import List from "./components/List";
 import Header from "./components/Header";
+import Main from "./components/Main";
 
 import "./App.css";
 
@@ -26,8 +27,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <List todoList={tasks} changeDone={changeDone} />
-      <AddTask addTask={addTask}/>
+      <Main />
+      {/* <List todoList={tasks} changeDone={changeDone} /> */}
+      {/* <AddTask addTask={addTask}/> */}
     </div>
   );
 }

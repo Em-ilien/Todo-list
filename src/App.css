@@ -3,7 +3,7 @@
 .App {
   background: #59565f;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   font-family: 'Inter', sans-serif;
 }
 
@@ -14,7 +14,7 @@
   background-color: #444248;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(5px);
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -62,6 +62,10 @@
   width: 2.5em;
   height: 2.5em;
   cursor: pointer;
+}
+
+.Header .right-ctn .settings-icon-ctn i {
+  color: #abaeaa;
 }
 
 .Header .right-ctn .settings-icon-ctn:hover {
