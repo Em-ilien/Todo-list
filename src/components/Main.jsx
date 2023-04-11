@@ -41,7 +41,7 @@ const filterCardSections = {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: "4em 0px",
-    gap: "7em",
+    padding: "4em 0em",
+    gap: "5em",
     margin: "0px 3em",
 }

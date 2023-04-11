@@ -49,13 +49,14 @@ const sectionFilterCards = {
 const sectionTitle = {
   fontStyle: "normal",
   fontWeight: "400",
-  fontSize: "29px",
-  lineHeight: "35px",
+  fontSize: "1.6em",
   color: "#fff",
+  margin: "0.625em 0em",
 }
 
 const filterCardsStyle = {
   display: "flex",
   flexDirection: "row",
   gap: "3em",
+  margin: "0 1em",
 }

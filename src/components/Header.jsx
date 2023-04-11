@@ -3,7 +3,7 @@ import React from "react";
 export default function Header(props) {
   return (
     <header className="Header">
-      <h1>Todo-list webapp</h1>
+      <h1 onClick={() => {document.location="."}}>Todo-list webapp</h1>
       <nav>
         {/* TODO */}
       </nav>

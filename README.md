@@ -1,7 +1,13 @@
 # Todo-list webapp
 
 En développement
+
 TODO
+
+## Prototype
+
+<a target="_blank" href="https://www.figma.com/file/2YeWglDby0dlsJJ7zOryhf/Todo-list-webapp">Lien vers le fichier Figma</a>
+<a target="_blank" href="https://www.figma.com/proto/2YeWglDby0dlsJJ7zOryhf/Todo-list-webapp">Lien vers la maquette Figma</a>
 
 ## Fonctionnalités
 
