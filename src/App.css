@@ -72,10 +72,6 @@
   background: #585F5680;
 }
 
-.Task .done {
-  text-decoration: line-through;
-}
-
 .FilterCard:hover i.material-icons {
   color: #fff!important;
 }
@@ -83,4 +79,12 @@
 .FilterCard i.material-icons:hover {
   background: #585F5680;
   box-shadow: 0 0 0 0.2rem #585F5680;
+}
+
+.Task[data-done="true"] span {
+  text-decoration: line-through;
+}
+
+.Task[data-done="true"] .checkbox i {
+  opacity: 1!important;
 }

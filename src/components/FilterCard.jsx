@@ -1,14 +1,10 @@
 import React from "react";
+import Task from "./Task.jsx";
 import {useSnapshot, state} from "../store.js";
 
 export default function FilterCard(props) {
-  const snap = useSnapshot(state)
-  
-  const tasksList = state.tasks.map((task) => (
-    <li key={task.id} style={taskStyle}>
-      <input type="checkbox" />
-      <span>{task.title}</span>
-    </li>
+  const tasksList = state.tasks.map((task, index) => (
+    <Task key={index} task={task}/>
   ));
 
   return (
@@ -54,12 +50,4 @@ const moreIcon = {
   color: "#ffffff00",
   cursor: "pointer",
   borderRadius: "2em",
-}
-
-const taskStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  gap: "1em",
-  margin: "0.5em 0em",
 }

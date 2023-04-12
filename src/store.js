@@ -7,4 +7,8 @@ const state = proxy({ tasks: [
     {id: 3, title:"exo page 323", description:"", done:false},
 ] });
 
+export const changeTaskStatus = (id) => {
+    state.tasks[id].done = !state.tasks[id].done
+}
+
 export { state, useSnapshot }

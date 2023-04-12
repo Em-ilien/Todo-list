@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import AddTask from "./components/AddTask";
-import List from "./components/List";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
