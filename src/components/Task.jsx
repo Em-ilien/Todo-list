@@ -15,7 +15,7 @@ export default function Task(props) {
       <div className="checkbox" style={checkbox} onClick={onCheckboxClicked}>
         <i className="material-icons" style={checkmarkIcon}>check</i>
       </div>
-      <span>{task.title}</span>
+      <span style={taskTitle}>{task.title}</span>
     </div>
   );
 }
@@ -43,4 +43,8 @@ const checkmarkIcon = {
   color: "#fff",
   opacity: "0",
   cursor: "pointer",
+}
+
+const taskTitle = {
+  whiteSpace: "nowrap",
 }

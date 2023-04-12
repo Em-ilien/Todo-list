@@ -3,8 +3,9 @@
 .App {
   background: #59565f;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 .Header {
@@ -16,8 +17,6 @@
   backdrop-filter: blur(5px);
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1;
 }
 

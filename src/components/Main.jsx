@@ -9,7 +9,7 @@ export default function Main(props) {
     ));
 
   return (
-    <main className="Main">
+    <main className="Main" style={mainStyle}>
         <div className="plus-icon" style={plusIcon}>
             <i className="material-icons" style={{fontSize: "3em"}}>add</i>
         </div>
@@ -35,6 +35,7 @@ const plusIcon = {
     justifyContent: "center",
     alignItems: "center",
     cursor: "pointer",
+    zIndex: "1",
 }
 
 const filterCardSections = {
@@ -44,4 +45,8 @@ const filterCardSections = {
     padding: "4em 0em",
     gap: "5em",
     margin: "0px 3em",
+}
+
+const mainStyle = {
+    overflow: "scroll",
 }

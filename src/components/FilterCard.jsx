@@ -1,9 +1,12 @@
 import React from "react";
 import Task from "./Task.jsx";
+import NewTask from "./NewTask.jsx";
 import {useSnapshot, state} from "../store.js";
 
 export default function FilterCard(props) {
-  const tasksList = state.tasks.map((task, index) => (
+  const snap = useSnapshot(state);
+
+  const tasksList = snap.tasks.map((task, index) => (
     <Task key={index} task={task}/>
   ));
 
@@ -13,7 +16,10 @@ export default function FilterCard(props) {
         <h3 style={cardTitle}>{props.title}</h3>
         <i className="material-icons" style={moreIcon}>more_vert</i>
       </header>
-      <div className="content">{tasksList}</div>
+      <div className="content">
+        <NewTask />
+        {tasksList}
+      </div>
     </div>
   );
 }
@@ -43,6 +49,7 @@ const cardTitle = {
   fontWeight: "400",
   fontSize: "1.3em",
   color: "#fff",
+  whiteSpace: "nowrap",
 }
 
 const moreIcon = {

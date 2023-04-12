@@ -44,6 +44,7 @@ export default function SectionFilterCards(props) {
 }
 
 const sectionFilterCards = {
+  padding: "0 4em 0 0",
 }
 
 const sectionTitle = {
