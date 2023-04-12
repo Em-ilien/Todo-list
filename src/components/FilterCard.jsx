@@ -18,16 +18,18 @@ export default function FilterCard(props) {
       </header>
       <div className="content">
         <NewTask />
-        {tasksList}
+        <div style={tasksListStyle}>
+          {tasksList}
+        </div>
       </div>
     </div>
   );
 }
 
 const filterCard = {
+  gap: "1em",
   padding: "0.5em 1.5em 2em 1.5em",
   minWidth: "15em",
-  gap: "1em",
   background: "#444248",
   boxShadow: "4px 4px 14px rgba(0, 0, 0, 0.15)",
   borderRadius: "0.75em",
@@ -57,4 +59,9 @@ const moreIcon = {
   color: "#ffffff00",
   cursor: "pointer",
   borderRadius: "2em",
+}
+
+const tasksListStyle = {
+  display: "flex",
+  flexDirection: "column-reverse",
 }

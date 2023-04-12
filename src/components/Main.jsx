@@ -5,7 +5,7 @@ const sectionsList = ["Chronologiquement", "Thématiquement", "Toutes les tâche
 
 export default function Main(props) {
     const sections = sectionsList.map((element, index) => (
-        <SectionFilterCards key={index} title={element} />
+        <SectionFilterCards key={index} id={index} title={element} />
     ));
 
   return (

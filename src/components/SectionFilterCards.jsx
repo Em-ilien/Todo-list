@@ -1,36 +1,14 @@
 import React from "react";
 import FilterCard from "./FilterCard";
-
-const filterCardsList = [
-  {
-    title: "Pour aujourd'hui",
-    filterCriterias: {
-      status: "all",
-    },
-  },
-  {
-    title: "Pour demain",
-    filterCriterias: {
-      status: "todo",
-    },
-  },
-  {
-    title: "Pour plus tard cette semaine",
-    filterCriterias: {
-      status: "inProgress",
-    },
-  },
-  {
-    title: "À long terme",
-    filterCriterias: {
-      status: "done",
-    },
-  },
-];
+import { state } from "../store.js";
+import { useSnapshot } from "valtio";
 
 export default function SectionFilterCards(props) {
-  const filterCards = filterCardsList.map((element, index) => (
-    <FilterCard key={index} title={element.title} filterCriterias={element.filterCriterias} sortCriterias={element.sortCriterias} />
+  const snap = useSnapshot(state);
+  const filterCardsList = snap.sectionscardfilter;
+
+  const filterCards = filterCardsList[props.id].cards.map((element, index) => (
+    <FilterCard key={index} title={element.title} />
   ));
 
   return (
