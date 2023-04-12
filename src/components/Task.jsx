@@ -10,12 +10,16 @@ export default function Task(props) {
     changeTaskStatus(task.id);
   }
 
+  function onClickOnTaskTitle(e) {
+    
+  }
+
   return (
     <div className="Task" key={task.id} style={taskStyle} data-done={snap.tasks[task.id].done}>
       <div className="checkbox" style={checkbox} onClick={onCheckboxClicked}>
         <i className="material-icons" style={checkmarkIcon}>check</i>
       </div>
-      <span style={taskTitle}>{task.title}</span>
+      <span style={taskTitle} onClick={onClickOnTaskTitle}>{task.title}</span>
     </div>
   );
 }
@@ -26,6 +30,7 @@ const taskStyle = {
   alignItems: "center",
   gap: "1em",
   margin: "0.5em 0em",
+  cursor: "pointer",
 }
 
 const checkbox = {

@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 
 import "./App.css";
+import ContextMenu from "./components/ContextMenu";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -24,10 +25,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Main />
-      {/* <List todoList={tasks} changeDone={changeDone} /> */}
-      {/* <AddTask addTask={addTask}/> */}
+      <div>
+        <Header />
+        <Main />
+      </div>
+      <ContextMenu type="task"/>
+      {/* <ContextMenu /> */}
     </div>
   );
 }
