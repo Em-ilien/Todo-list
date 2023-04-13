@@ -9,10 +9,10 @@ export default function TaskContextMenu(props) {
     const task = snap.tasks.find(task => task.id === snap.contextMenuTaskId);
 
     const categories = ["Aucune", "Travail", "Perso"].map((element, index) => (
-        <option key={index} value={element} selected={(task.category == element)}>{element}</option>
+        <option key={index} value={element}>{element}</option>
     ));
     const importances = ["Facultative", "Obligatoire", "Capitale"].map((element, index) => (
-        <option key={index} value={element} selected={(task.importance == element)}>{element}</option>
+        <option key={index} value={element}>{element}</option>
     ));
 
     function onFieldChange(e) {
@@ -22,35 +22,35 @@ export default function TaskContextMenu(props) {
     return (
         <aside className="Task ContextMenu" style={contextMenu}>
             <h1 style={title}>Détails de la tâche</h1>
-            <div style={fieldsCtn} onChange={onFieldChange}>
+            <div style={fieldsCtn}>
                 <label style={label}>
                     <span style={labelSpan}>Titre</span>
-                    <input style={input} type="text" name="title" value={task.title} />
+                    <input style={input} type="text" name="title" value={task.title} onChange={onFieldChange} />
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Description</span>
-                    <textarea style={input} name="description" value={task.description} />
+                    <textarea style={input} name="description" value={task.description} onChange={onFieldChange} />
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Catégorie</span>
-                    <select style={input} name="category">
+                    <select style={input} name="category" value={task.category} onChange={onFieldChange}>
                         {categories}
                     </select>
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Échéance</span>
-                    <input style={input} type="date" name="deadline" value={task.deadline} />
+                    <input style={input} type="date" name="deadline" value={task.deadline} onChange={onFieldChange} />
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Statut</span>
-                    <select style={input} name="done">
-                        <option value="false" selected={!task.done}>À faire</option>
-                        <option value="true" selected={task.done}>Terminée</option>
+                    <select style={input} name="done" value={task.done} onChange={onFieldChange}>
+                        <option value="false">À faire</option>
+                        <option value="true">Terminée</option>
                     </select>
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Importance</span>
-                    <select style={input} name="importance">
+                    <select style={input} name="importance" value={task.importance} onChange={onFieldChange}>
                         {importances}
                     </select>
                 </label>

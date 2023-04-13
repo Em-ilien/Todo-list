@@ -2,10 +2,10 @@ import { proxy, useSnapshot } from 'valtio'
 
 const state = proxy({
     tasks: [
-        {id: 0, title:"Terminer l'exo de maths page 185", description:"cc", category:null, deadline:"2023-04-13", done:false, importance: "Obligatoire"},
-        {id: 1, title:"Terminer le DM de physique pour mardi", description:"", category:null, deadline:"2023-04-15", done:false, importance: "Facultative"},
+        {id: 0, title:"Terminer l'exo de maths page 185", description:"cc", category:"Aucune", deadline:"2023-04-13", done:false, importance: "Obligatoire"},
+        {id: 1, title:"Terminer le DM de physique pour mardi", description:"", category:"Aucune", deadline:"2023-04-15", done:false, importance: "Facultative"},
         {id: 2, title:"Réviser le chapitre sur l'évolution (SVT)", description:"", category:"Travail", deadline:"2023-04-15", done:false, importance: "Obigatoire"},
-        {id: 3, title:"Finir cette superbe app de Todo-list", description:"", category:null, deadline:"2023-04-13", done:false, importance: "Capitale"},
+        {id: 3, title:"Finir cette superbe app de Todo-list", description:"", category:"Aucune", deadline:"2023-04-13", done:false, importance: "Capitale"},
     ],
     sectionscardfilter: [
         {
@@ -68,7 +68,7 @@ const state = proxy({
 
 export const addNewTask = (title) => {
     const id = state.tasks.length;
-    state.tasks.push({id: id, title, description:"", category:null, deadline:"2023-04-13", done:false, importance: "Obligatoire"});
+    state.tasks.push({id: id, title, description:"", category:"Aucune", deadline:"2023-04-13", done:false, importance: "Obligatoire"});
     return id;
 }
 
