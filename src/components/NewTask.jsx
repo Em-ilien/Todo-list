@@ -31,7 +31,7 @@ const newTask = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  gap: "1em",
+  gap: "0.625em",
   margin: "0.5em 0em",
   opacity: "0.3",
   cursor: "pointer",

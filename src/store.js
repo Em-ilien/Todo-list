@@ -72,6 +72,13 @@ export const addNewTask = (title) => {
     return id;
 }
 
+export const deleteTask = (id) => {
+    state.tasks.splice(id, 1);
+    state.tasks.forEach((task, index) => {
+        task.id = index;
+    });
+}
+
 export const changeTaskStatus = (id) => {
     state.tasks[id].done = !state.tasks[id].done
 }

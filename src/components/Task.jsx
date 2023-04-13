@@ -1,5 +1,5 @@
 import React from 'react';
-import { state, changeTaskStatus, showTaskContextMenu } from "../store.js";
+import { state, changeTaskStatus, showTaskContextMenu, deleteTask } from "../store.js";
 import { useSnapshot } from "valtio";
 
 export default function Task(props) {
@@ -20,12 +20,22 @@ export default function Task(props) {
     }, 0);
   }
 
+  function onClickdeleteTask(e) {
+    e.stopPropagation();
+    deleteTask(task.id);
+  }
+
   return (
     <div className="Task" key={task.id} style={taskStyle} onClick={openContextMenu} data-done={snap.tasks[task.id].done} data-task-opened-on-context-menu={snap.contextMenuTaskId == task.id}>
-      <div className="checkbox" style={checkbox} onClick={onCheckboxClicked}>
-        <i className="material-icons" style={checkmarkIcon}>check</i>
+      <div style={leftCtn}>
+        <div className="checkbox" style={checkbox} onClick={onCheckboxClicked}>
+          <i className="material-icons" style={checkmarkIcon}>check</i>
+        </div>
+        <span style={taskTitle}>{task.title}</span>
       </div>
-      <span style={taskTitle}>{task.title}</span>
+      <div className="remove-action-ctn">
+        <i className="material-icons" style={{borderRadius: "3em"}} onClick={onClickdeleteTask}>delete</i>
+      </div>
     </div>
   );
 }
@@ -34,11 +44,19 @@ const taskStyle = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  justifyContent: "space-between",
   gap: "1em",
   padding: "0.5em 1em",
   margin: "0 -1em",
   borderRadius: "0.5em",
   cursor: "pointer",
+}
+
+const leftCtn = {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "0.625em",
 }
 
 const checkbox = {

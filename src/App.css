@@ -89,6 +89,10 @@
   box-shadow: 0 0 0 0.2rem #585F5680;
 }
 
+.Task:hover {
+  background: #585F5625;
+}
+
 .Task[data-done="true"] span {
   text-decoration: line-through;
 }
@@ -99,4 +103,11 @@
 
 .Task[data-task-opened-on-context-menu="true"] {
   background: #585F5650;
+}
+
+.Task .remove-action-ctn {
+  opacity: 0;
+}
+.Task:hover .remove-action-ctn {
+  opacity: 1;
 }
