@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import TaskContextMenu from "./components/TaskContextMenu";
+// import FilterContextMenu from "./components/FilterContextMenu";
+
+import { state } from "./store.js";
+import { useSnapshot } from "valtio";
+
 
 import "./App.css";
-import ContextMenu from "./components/ContextMenu";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const snap = useSnapshot(state);
 
-  function addTask(text) {
-    const task = {
-      text,
-      done: false
-    };
-    setTasks([...tasks, task]);
+  function getContextMenu() {
+    switch (snap.contextMenuType) {
+      case "task":
+        return (
+          <TaskContextMenu />
+        );
+      case "filter":
+        return (
+          <FilterContextMenu />
+        )
+      default:
+        return;
+    }
   }
 
-  // changer le status du todo
-  function changeDone(index) {
-    const newTasks = [...tasks]; // copie du tableau
-    newTasks[index] = { ...newTasks[index], done: !newTasks[index].done };
-    setTasks(newTasks);
-  }
+  const contextMenu = getContextMenu();
 
   return (
     <div className="App">
@@ -29,8 +36,7 @@ function App() {
         <Header />
         <Main />
       </div>
-      <ContextMenu type="task"/>
-      {/* <ContextMenu /> */}
+      {contextMenu}
     </div>
   );
 }

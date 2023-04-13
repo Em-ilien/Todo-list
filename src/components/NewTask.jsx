@@ -1,5 +1,5 @@
 import React from 'react';
-import { state, addNewTask } from "../store.js";
+import { state, addNewTask, showTaskContextMenu } from "../store.js";
 import { useSnapshot } from "valtio";
 
 
@@ -7,8 +7,8 @@ export default function Task(props) {
     const snap = useSnapshot(state);
 
     function onClickNewTask(e) {
-        console.log("New task clicked");
-        addNewTask("new");
+      let id = addNewTask("new");
+      showTaskContextMenu(id);
     }
     
   return (

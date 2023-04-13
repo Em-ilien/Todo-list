@@ -1,17 +1,17 @@
 import React from 'react';
-import { state, changeTaskStatus } from "../store.js";
+import { state, changeTaskStatus, showTaskContextMenu } from "../store.js";
 import { useSnapshot } from "valtio";
 
 export default function Task(props) {
   const snap = useSnapshot(state);
-  const task = state.tasks.find(task => task.id === props.task.id);
+  const task = snap.tasks.find(task => task.id === props.task.id);
   
   function onCheckboxClicked(e) {
     changeTaskStatus(task.id);
   }
 
   function onClickOnTaskTitle(e) {
-    
+    showTaskContextMenu(task.id);
   }
 
   return (

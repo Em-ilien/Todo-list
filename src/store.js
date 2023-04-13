@@ -2,10 +2,10 @@ import { proxy, useSnapshot } from 'valtio'
 
 const state = proxy({
     tasks: [
-        {id: 0, title:"Terminer l'exo de maths page 185", description:"", done:false},
-        {id: 1, title:"Terminer le DM de physique pour mardi", description:"", done:false},
-        {id: 2, title:"Réviser le chapitre sur l'évolution (SVT)", description:"", done:false},
-        {id: 3, title:"Finir cette superbe app de Todo-list", description:"", done:false},
+        {id: 0, title:"Terminer l'exo de maths page 185", description:"cc", category:null, deadline:"2023-04-13", done:false, importance: "Obligatoire"},
+        {id: 1, title:"Terminer le DM de physique pour mardi", description:"", category:null, deadline:"2023-04-15", done:false, importance: "Facultative"},
+        {id: 2, title:"Réviser le chapitre sur l'évolution (SVT)", description:"", category:"Travail", deadline:"2023-04-15", done:false, importance: "Obigatoire"},
+        {id: 3, title:"Finir cette superbe app de Todo-list", description:"", category:null, deadline:"2023-04-13", done:false, importance: "Capitale"},
     ],
     sectionscardfilter: [
         {
@@ -56,22 +56,33 @@ const state = proxy({
         {
             title: "Thématiquement",
             cards: [
-        
+                
         ]},
         {
             title: "Toutes les tâches",
             cards: [
-        
+
         ]},
-    ]
+    ],
 });
 
 export const addNewTask = (title) => {
-    state.tasks.push({id: state.tasks.length, title, description:"", done:false})
+    const id = state.tasks.length;
+    state.tasks.push({id: id, title, description:"", category:null, deadline:"2023-04-13", done:false, importance: "Obligatoire"});
+    return id;
 }
 
 export const changeTaskStatus = (id) => {
     state.tasks[id].done = !state.tasks[id].done
+}
+
+export const changeTaskProperty = (id, property, value) => {
+    state.tasks[id][property] = value;
+}
+
+export const showTaskContextMenu = (id) => {
+    state.contextMenuType = "task";
+    state.contextMenuTaskId = id;
 }
 
 export { state, useSnapshot }
