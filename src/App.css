@@ -96,3 +96,7 @@
 .Task[data-done="true"] .checkbox i {
   opacity: 1!important;
 }
+
+.Task[data-task-opened-on-context-menu="true"] {
+  background: #585F5650;
+}

@@ -4,7 +4,7 @@ import Main from "./components/Main";
 import TaskContextMenu from "./components/TaskContextMenu";
 // import FilterContextMenu from "./components/FilterContextMenu";
 
-import { state } from "./store.js";
+import { state, hideContextMenu } from "./store.js";
 import { useSnapshot } from "valtio";
 
 
@@ -30,9 +30,13 @@ function App() {
 
   const contextMenu = getContextMenu();
 
+  function closeContextMenu() {
+    hideContextMenu();
+  }
+
   return (
     <div className="App">
-      <div>
+      <div onClickCapture={closeContextMenu}>
         <Header />
         <Main />
       </div>

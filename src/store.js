@@ -85,4 +85,9 @@ export const showTaskContextMenu = (id) => {
     state.contextMenuTaskId = id;
 }
 
+export const hideContextMenu = () => {
+    state.contextMenuType = null;
+    state.contextMenuTaskId = null;
+}
+
 export { state, useSnapshot }

@@ -7,8 +7,14 @@ export default function Task(props) {
     const snap = useSnapshot(state);
 
     function onClickNewTask(e) {
-      let id = addNewTask("new");
+      let id = addNewTask("Nouvelle tâche...");
       showTaskContextMenu(id);
+
+      setTimeout(() => {
+        let titleInput = document.querySelector(".Task.ContextMenu input[name='title']");
+        titleInput.focus();
+        titleInput.setSelectionRange(0, titleInput.value.length);
+      }, 0);
     }
     
   return (

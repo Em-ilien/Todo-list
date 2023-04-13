@@ -10,16 +10,22 @@ export default function Task(props) {
     changeTaskStatus(task.id);
   }
 
-  function onClickOnTaskTitle(e) {
+  function openContextMenu(e) {
     showTaskContextMenu(task.id);
+
+    setTimeout(() => {
+      let titleInput = document.querySelector(".Task.ContextMenu input[name='title']");
+      titleInput.focus();
+      titleInput.setSelectionRange(0, titleInput.value.length);
+    }, 0);
   }
 
   return (
-    <div className="Task" key={task.id} style={taskStyle} data-done={snap.tasks[task.id].done}>
+    <div className="Task" key={task.id} style={taskStyle} onClick={openContextMenu} data-done={snap.tasks[task.id].done} data-task-opened-on-context-menu={snap.contextMenuTaskId == task.id}>
       <div className="checkbox" style={checkbox} onClick={onCheckboxClicked}>
         <i className="material-icons" style={checkmarkIcon}>check</i>
       </div>
-      <span style={taskTitle} onClick={onClickOnTaskTitle}>{task.title}</span>
+      <span style={taskTitle}>{task.title}</span>
     </div>
   );
 }
@@ -29,7 +35,9 @@ const taskStyle = {
   flexDirection: "row",
   alignItems: "center",
   gap: "1em",
-  margin: "0.5em 0em",
+  padding: "0.5em 1em",
+  margin: "0 -1em",
+  borderRadius: "0.5em",
   cursor: "pointer",
 }
 
