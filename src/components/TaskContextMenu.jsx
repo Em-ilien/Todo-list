@@ -3,6 +3,19 @@ import React from "react";
 import { state, changeTaskProperty } from "../store.js";
 import { useSnapshot } from "valtio";
 
+function convertToDate(deadline) {
+    let days = parseInt(deadline.substring(2), 10);
+
+    const date = new Date();
+
+    if (deadline[1] == "-")
+        days *= -1;
+
+    date.setDate(date.getDate() + days);
+
+    return date.toISOString().substring(0, 10);
+}
+
 export default function TaskContextMenu(props) {
     const snap = useSnapshot(state);
 
@@ -39,7 +52,7 @@ export default function TaskContextMenu(props) {
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Échéance</span>
-                    <input style={input} type="date" name="deadline" value={task.deadline} onChange={onFieldChange} />
+                    <input style={input} type="date" name="deadline" value={convertToDate(task.deadline)} onChange={onFieldChange} />
                 </label>
                 <label style={label}>
                     <span style={labelSpan}>Statut</span>

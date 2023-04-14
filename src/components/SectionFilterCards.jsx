@@ -5,10 +5,10 @@ import { useSnapshot } from "valtio";
 
 export default function SectionFilterCards(props) {
   const snap = useSnapshot(state);
-  const filterCardsList = snap.sectionscardfilter;
+  const filterCardsList = snap.sectionsCardFilter;
 
   const filterCards = filterCardsList[props.id].cards.map((element, index) => (
-    <FilterCard key={index} title={element.title} />
+    <FilterCard key={index} id={index} title={element.title} sectionCardFilterId={props.id} />
   ));
 
   return (

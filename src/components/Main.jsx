@@ -1,9 +1,14 @@
 import React from "react";
 import SectionFilterCards from "./SectionFilterCards";
 
-const sectionsList = ["Chronologiquement", "Thématiquement", "Toutes les tâches"];
+import { state } from "../store.js";
+import { useSnapshot } from "valtio";
 
 export default function Main(props) {
+    const snap = useSnapshot(state);
+
+    const sectionsList = snap.sectionsCardFilter.map((element) => element.title);
+
     const sections = sectionsList.map((element, index) => (
         <SectionFilterCards key={index} id={index} title={element} />
     ));

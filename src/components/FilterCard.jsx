@@ -1,14 +1,72 @@
 import React from "react";
 import Task from "./Task.jsx";
 import NewTask from "./NewTask.jsx";
-import {useSnapshot, state} from "../store.js";
+import { state } from "../store.js";
+import { useSnapshot } from "valtio";
+
+function convertRelativeDateToAbsoluteDate(deadline) {
+  let days = parseInt(deadline.substring(2), 10);
+
+  const date = new Date();
+
+  if (deadline[1] == "-")
+      days *= -1;
+
+  date.setDate(date.getDate() + days);
+
+  return date.toISOString().substring(0, 10);
+}
+
 
 export default function FilterCard(props) {
   const snap = useSnapshot(state);
 
-  const tasksList = snap.tasks.map((task, index) => (
+  const filters = snap.sectionsCardFilter[props.sectionCardFilterId].cards[props.id].filterCriterias; 
+
+  const filterCompliantTasks = snap.tasks
+  .filter((task) => {
+    return (filters.done == undefined || task.done == filters.done);
+  })
+  .filter((task) => {
+    return (filters.importance == undefined || task.importance === filters.importance);
+  })
+  .filter((task) => {
+    if (filters.deadline == undefined)
+      return true;
+
+    if (filters.deadline.after != undefined) {
+      const filterDate = convertRelativeDateToAbsoluteDate(filters.deadline.after);
+      const taskDate = convertRelativeDateToAbsoluteDate(task.deadline);
+
+      if (filterDate > taskDate)
+        return false;
+    }
+
+    if (filters.deadline.before != undefined) {
+      const filterDate = convertRelativeDateToAbsoluteDate(filters.deadline.before);
+      const taskDate = convertRelativeDateToAbsoluteDate(task.deadline);
+
+      if (filterDate < taskDate)
+        return false;
+    }
+
+    return true;
+  })
+  .filter((task) => {
+    return (filters.category == undefined || task.category === filters.category);
+  })
+  .filter((task) => {
+    return (filters.title == undefined || task.title.includes(filters.title));
+  })
+  .filter((task) => {
+    return (filters.description == undefined || task.description.includes(filters.description));
+  });  
+    
+
+  const tasksList = filterCompliantTasks.map((task, index) => (
     <Task key={index} task={task}/>
   ));
+
 
   return (
     <div className="FilterCard" style={filterCard}>
