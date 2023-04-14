@@ -22,6 +22,7 @@ export default function FilterCard(props) {
   const snap = useSnapshot(state);
 
   const filters = snap.sectionsCardFilter[props.sectionCardFilterId].cards[props.id].filterCriterias; 
+  const sorts = snap.sectionsCardFilter[props.sectionCardFilterId].cards[props.id].sortCriterias; 
 
   const filterCompliantTasks = snap.tasks
   .filter((task) => {
@@ -60,7 +61,44 @@ export default function FilterCard(props) {
   })
   .filter((task) => {
     return (filters.description == undefined || task.description.includes(filters.description));
-  });  
+  })
+  .sort((a, b) => {
+    if (sorts.description == undefined || sorts.description == "asc")
+      return a.description.localeCompare(b.description);
+    else
+      return b.description.localeCompare(a.description);
+  })
+  .sort((a, b) => {
+    if (sorts.title == undefined || sorts.title == "asc")
+      return a.title.localeCompare(b.title);
+    else
+      return b.title.localeCompare(a.title);
+  })
+  .sort((a, b) => {
+    if (sorts.category == undefined || sorts.category == "asc")
+      return a.category - b.category;
+    else
+      return b.category - a.category;
+  })
+  .sort((a, b) => {
+    if (sorts.importance == undefined || sorts.importance == "asc")
+      return a.importance - b.importance;
+    else
+      return b.importance - a.importance;
+  })
+  .sort((a, b) => {
+    if (sorts.deadline == undefined || sorts.deadline == "asc")
+      return a.deadline - b.deadline;
+    else
+      return b.deadline - a.deadline;
+  })
+  .sort((a, b) => {
+    if (sorts.done == undefined || sorts.done == "asc")
+      return a.done - b.done;
+    else
+      return b.done - a.done;
+  });
+
     
 
   const tasksList = filterCompliantTasks.map((task, index) => (

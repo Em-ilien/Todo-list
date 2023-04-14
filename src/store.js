@@ -17,36 +17,40 @@ const state = proxy({
                 filterCriterias: {
                     deadline: {before: "J+0"},
                 },
-                sortCriterias: {
-                    done: "asc",
-                }
+                sortCriterias: [
+                    {done: "asc"},
+                    {deadline: "asc"},
+                ]
             },
             {
                 title: "Pour demain",
                 filterCriterias: {
                     deadline: {after: "J+1", before: "J+1"},
                 },
-                sortCriterias: {
-                    done: "asc",
-                }
+                sortCriterias: [
+                    {done: "asc"},
+                    {deadline: "asc"},
+                ]
             },
             {
                 title: "Pour plus tard cette semaine",
                 filterCriterias: {
                     deadline: {after: "J+2", before: "J+7"},
                 },
-                sortCriterias: {
-                    done: "asc",
-                }
+                sortCriterias: [
+                    {done: "asc"},
+                    {deadline: "asc"},
+                ]
             },
             {
                 title: "À long terme",
                 filterCriterias: {
                     deadline: {after: "J+8"},
                 },
-                sortCriterias: {
-                    done: "asc",
-                }
+                sortCriterias: [
+                    {done: "asc"},
+                    {deadline: "asc"},
+                ]
             },
 
         ]},
