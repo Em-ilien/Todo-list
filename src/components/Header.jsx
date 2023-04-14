@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useRoutes, Link, useQueryParams } from 'raviger'
+
+
 export default function Header(props) {
   return (
     <header className="Header">
@@ -13,9 +16,9 @@ export default function Header(props) {
                 EC
             </span>
         </div>
-        <div className="settings-icon-ctn">
+        <Link className="settings-icon-ctn" href="/settings">
           <i className="material-icons">settings</i>
-        </div>
+        </Link>
       </div>
     </header>
   );
